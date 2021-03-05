@@ -7,7 +7,7 @@ var gulp = require('gulp'),
 var saaspath  = "build/sass/*.scss";    
 var csspath   = "assets/css";
 var jspathEs6 = "build/js/*.js";
-var jspath    = "assets/js";
+var jspathEs5 = "assets/js";
 
 
 gulp.task('watch', function(){
@@ -25,7 +25,7 @@ gulp.task('watch', function(){
       .pipe(uglify().on('error', function(e){
               console.log(e);
         }))
-      .pipe(gulp.dest(jspath));
+      .pipe(gulp.dest(jspathEs5));
   });
 });
 
