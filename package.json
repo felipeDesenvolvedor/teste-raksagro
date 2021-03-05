@@ -1,0 +1,31 @@
+{
+  "name": "rasks-test",
+  "version": "1.0.0",
+  "description": "Teste de Front end",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "gulp": "gulp default"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/felipeDesenvolvedor/teste-front-end.git"
+  },
+  "author": "Felipe Santos",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.11.6",
+    "@babel/preset-env": "^7.11.5",
+    "babel": "^6.23.0",
+    "gulp": "^4.0.2",
+    "gulp-babel": "^8.0.0",
+    "gulp-cssmin": "^0.1.7",
+    "gulp-sass": "^4.1.0",
+    "gulp-uglify": "^1.5.4",
+    "node-sass": "^5.0.0"
+  },
+  "bugs": {
+    "url": "https://github.com/felipeDesenvolvedor/teste-front-end/issues"
+  },
+  "homepage": "https://github.com/felipeDesenvolvedor/teste-front-end#readme"
+}
