@@ -3,11 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/assets/css/index.css"/>
+    <link rel="stylesheet" href="assets/css/index.css"/>
     <title>Raks Teste</title>
 </head>
 <body>
-    
+    <header class="header">
+        <div class="top__logo__container">
+            <a href="/"><img class="logo" src="assets/img/logo.png"></a>
+        </div>
+    </header>
+    <main>
+        <section class="user__actions">
+          <input type="text" placeholder="pesquisar usuario"/>
+          <button>pesquisar</button>
+          <button>cadastrar</button>
+        </section>
+        <section class="user__data">
+            <table>
+                <thead>
+                  <tr>
+                    <th scope="col">nome completo</th>
+                    <th scope="col">cpf</th>
+                    <th scope="col">telefone</th>
+                    <th scope="col">email</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="data">
+                    <td data-label="Account">felipe da silva santos</td>
+                    <td data-label="Due Date">46120848886</td>
+                    <td data-label="Amount">2518 2320</td>
+                    <td data-label="Period">felipe@gmail.com</td>
+                    <td class="data__actions"><button>Editar</button></td>
+                    <td class="data__actions"><button>Excluir</button></td>
+                  </tr>
+                </tbody>
+              </table>
+        </section>
+    </main>
 </body>
-    <script src="/assets/js/index.js"></script>
+    <script src="assets/js/index.js"></script>
 </html>
