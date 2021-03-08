@@ -4,10 +4,11 @@ import {checkPage, initializeLocalStorage} from './utils.js';
 const initializeInsertedUser = () => {
 
     if(!checkPage('pageUser')) {
-        return;
+        return false;
     }
 
     initializeLocalStorage();
+    return true;
 }
 
 const salve = () => {
@@ -18,5 +19,7 @@ const salve = () => {
 document.addEventListener('DOMContentLoaded', () => {
 
 });
+
+export {initializeInsertedUser, salve}
 
 

@@ -6,12 +6,13 @@ const initializeLocalStorage = () => {
 
     if (!lastInsertedUser) {
         localStorage.setItem('lastInsertedUser', '1');
-        return;
+        return localStorage.getItem('lastInsertedUser');
     }
 
     lastInsertedUser++;
 
     localStorage.setItem('lastInsertedUser', lastInsertedUser);
+    return localStorage.getItem('lastInsertedUser');
 }
 
 export {checkPage, initializeLocalStorage};
