@@ -4,8 +4,10 @@
   "description": "Teste de Front end",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "gulp": "gulp default"
+    "test": "jest",
+    "gulp": "gulp default",
+    "build-dev": "webpack --mode=development --config webpack.config.js",
+    "build-prod": "webpack --mode=production --config webpack.config.js"
   },
   "repository": {
     "type": "git",
@@ -17,12 +19,17 @@
     "@babel/core": "^7.11.6",
     "@babel/preset-env": "^7.11.5",
     "babel": "^6.23.0",
+    "babel-loader": "^8.2.2",
+    "babili-webpack-plugin": "^0.1.2",
     "gulp": "^4.0.2",
     "gulp-babel": "^8.0.0",
     "gulp-cssmin": "^0.1.7",
     "gulp-sass": "^4.1.0",
     "gulp-uglify": "^1.5.4",
-    "node-sass": "^5.0.0"
+    "jest": "^26.6.3",
+    "node-sass": "^5.0.0",
+    "webpack": "^5.24.3",
+    "webpack-cli": "^4.5.0"
   },
   "bugs": {
     "url": "https://github.com/felipeDesenvolvedor/teste-front-end/issues"
