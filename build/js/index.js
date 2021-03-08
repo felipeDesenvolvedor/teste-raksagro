@@ -1,3 +1,5 @@
+import user from './user.js';
+
 document.addEventListener('DOMContentLoaded', () => {
-    console.log('index');
+    
 });
