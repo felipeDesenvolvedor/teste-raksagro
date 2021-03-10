@@ -1,5 +1,5 @@
 import User from './classes/User';
-import {checkPage, initializeLocalStorage} from './utils.js';
+import {checkPage, initializeLocalStorage, inputEmpty, valideEmail, valideCPF} from './utils.js';
 
 const initializeInsertedUser = () => {    
     return initializeLocalStorage();
@@ -7,12 +7,12 @@ const initializeInsertedUser = () => {
 
 const save = () => {
     let data = haldleForm();
-    let id = initializeInsertedUser();
-
-    if (!id) {
+    
+    if (!data) {
         return false;
     }
-
+    
+    let id = initializeInsertedUser();
     data['id'] = id;
 
     const user = new User();
@@ -23,6 +23,22 @@ const haldleForm = () => {
     const formUser = document.querySelector('.js-form');
 
     formUser.addEventListener('submit', event => event.preventDefault());
+
+    if(inputEmpty(formUser.nomeCompleto)) {
+        console.log('empty');
+        return;
+    }
+
+    if(!valideEmail(formUser.email)) {
+        console.log('invalid email');
+        return;
+    }
+
+
+    if(!valideCPF(formUser.cpf)) {
+        console.log('invalid CPF');
+        return;
+    }
 
     return {
         "nomeCompleto":formUser.nomeCompleto.value,

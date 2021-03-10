@@ -15,4 +15,21 @@ const initializeLocalStorage = () => {
     return localStorage.getItem('lastInsertedUser');
 }
 
-export {checkPage, initializeLocalStorage};
+const inputEmpty = input => input.value.length < 3 ? true : false;
+
+const valideEmail = input => {
+    const regex = /\w@\w*\.\w/;
+    const value = input.value
+
+    return regex.test(value);
+}
+
+const valideCPF = input => {
+    const regex = /\d{3}\.\d{3}\.\d{3}-\d{2}/;
+    const value = input.value;
+
+    return regex.test(value);
+}
+
+
+export {checkPage, initializeLocalStorage, inputEmpty, valideEmail, valideCPF};
