@@ -1,15 +1,4 @@
-import {initializeInsertedUser, handleBtnCadastrar, save, haldleForm} from "../js/user";
-
-
-test('Expect initialize User', () => {
-    document.body.id = "pageUser";
-    expect(initializeInsertedUser()).toEqual(true);
-})
-
-test('Not Expect initialize User', () => {
-    document.body.id = "pageIndex";
-    expect(initializeInsertedUser()).toEqual(false);
-})
+import {handleBtnCadastrar, save, haldleForm} from "../js/user";
 
 test('check data return do form', () => {
 

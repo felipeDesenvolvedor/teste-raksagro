@@ -1,10 +1,6 @@
 import User from './classes/User';
 import {checkPage, initializeLocalStorage, inputEmpty, valideEmail, valideCPF} from './utils.js';
 
-const initializeInsertedUser = () => {    
-    return initializeLocalStorage();
-}
-
 const save = () => {
     let data = haldleForm();
     
@@ -12,7 +8,7 @@ const save = () => {
         return false;
     }
     
-    let id = initializeInsertedUser();
+    let id = initializeLocalStorage();
     data['id'] = id;
 
     const user = new User();
@@ -64,6 +60,6 @@ document.addEventListener('DOMContentLoaded', () => {
     handleBtnCadastrar();
 });
 
-export {initializeInsertedUser, handleBtnCadastrar, save, haldleForm}
+export {handleBtnCadastrar, save, haldleForm}
 
 
