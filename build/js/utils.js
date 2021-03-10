@@ -31,5 +31,27 @@ const valideCPF = input => {
     return regex.test(value);
 }
 
+const removeMessageError = (element, className) => {
+    let elementParent = element.parentNode;
 
-export {checkPage, initializeLocalStorage, inputEmpty, valideEmail, valideCPF};
+    if (elementParent.querySelector('span')) {
+        elementParent.querySelector('span').remove();
+    }
+
+    elementParent.classList.remove(className);
+}
+
+const addMessageError = (element, className, message) => {
+    let messageHTML = document.createElement('span')
+          messageHTML.classList.add('message');
+          messageHTML.innerHTML = message;
+
+    let elementParent = element.parentNode;
+
+    removeMessageError(element, className);
+
+    elementParent.appendChild(messageHTML);
+    elementParent.classList.add(className);
+} 
+
+export {checkPage, initializeLocalStorage, inputEmpty, valideEmail, valideCPF, addMessageError, removeMessageError};
