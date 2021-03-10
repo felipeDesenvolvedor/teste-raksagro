@@ -1,4 +1,4 @@
-import {initializeInsertedUser, handleBtnCadastrar, salve, haldleForm} from "../js/user";
+import {initializeInsertedUser, handleBtnCadastrar, save, haldleForm} from "../js/user";
 
 
 test('Expect initialize User', () => {
@@ -22,3 +22,13 @@ test('check data return do form', () => {
         })
     });
 })
+
+test('checked if salve how sucess', () => {
+
+    document.body.id = "pageIndex";
+    
+    document.addEventListener('DOMContentLoaded', () => {
+        
+        expect(save()).toEqual(true);
+    })
+});

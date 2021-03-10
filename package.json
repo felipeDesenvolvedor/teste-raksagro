@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
+    "test:watch": "npm run test -- --watch",
     "gulp": "gulp default",
     "build-dev": "webpack --mode=development --config webpack.config.js",
     "build-prod": "webpack --mode=production --config webpack.config.js"

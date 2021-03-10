@@ -1,5 +1,8 @@
 class LocalStorage {
-    addItem({user}) {
-        localStorage.setItem(idUser, JSON.stringify());
+    addRegister(id, data) {
+        localStorage.setItem(id, JSON.stringify(data));
+        return id
     }
 }
+
+export default LocalStorage;

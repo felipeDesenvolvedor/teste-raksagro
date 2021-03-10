@@ -1,25 +1,22 @@
 import User from './classes/User';
 import {checkPage, initializeLocalStorage} from './utils.js';
 
-const initializeInsertedUser = () => {
-
-    if(!checkPage('pageUser')) {
-        return false;
-    }
-
-    initializeLocalStorage();
-    return true;
+const initializeInsertedUser = () => {    
+    return initializeLocalStorage();
 }
 
-const salve = () => {
+const save = () => {
     let data = haldleForm();
+    let id = initializeInsertedUser();
 
-    if (!initializeInsertedUser()) {
+    if (!id) {
         return false;
     }
 
-    // const user = User();
-    // user.criar();
+    data['id'] = id;
+
+    const user = new User();
+    user.criar(data);
 }
 
 const haldleForm = () => {
@@ -28,7 +25,7 @@ const haldleForm = () => {
     formUser.addEventListener('submit', event => event.preventDefault());
 
     return {
-        "nome":formUser.nome.value,
+        "nomeCompleto":formUser.nomeCompleto.value,
         "email":formUser.email.value,
         "cpf":formUser.cpf.value,
         "telefone":formUser.telefone.value,
@@ -37,18 +34,20 @@ const haldleForm = () => {
 
 const handleBtnCadastrar = () => {
     const btnCadastrar = document.querySelector('.js-cadastrar');
+
+    if(!checkPage('pageUser')) {
+        return null;
+    }
     
     btnCadastrar.addEventListener('click', () => {
-        salve();
+        save();
     });
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    // handleBtnCadastrar();
-
-    console.log(haldleForm());
+    handleBtnCadastrar();
 });
 
-export {initializeInsertedUser, handleBtnCadastrar, salve, haldleForm}
+export {initializeInsertedUser, handleBtnCadastrar, save, haldleForm}
 
 

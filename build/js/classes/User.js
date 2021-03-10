@@ -1,10 +1,13 @@
+import  LocalStorage from "./LocalStorage";
+
 class User {
     constructor() {
         this.id = "";
         this.nomeCompleto = "";
         this.cpf = "";
         this.telefone = "";
-        this.email = ""; 
+        this.email = "";
+        this.localstorage = new LocalStorage();
     }
    
     list({idUser}) {
@@ -15,10 +18,15 @@ class User {
 
     }
 
-    criar({nomeCompleto, cpf, telefone, email}) {
-        let id = parseInt(this.id) + 1;
-        this.id = id.toString();
-        console.log(this.id);
+    criar({id, nomeCompleto, email, cpf, telefone}) {
+        const data = { 
+            "nomeCompleto":this.setNomeCompleto(nomeCompleto), 
+            "email":this.setEmail(email),
+            "cpf":this.setCpf(cpf), 
+            "telefone":this.setTelefone(telefone)
+        }
+        
+        return this.localstorage.addRegister(this.setId(id), data);
     }
 
     editar() {
@@ -28,6 +36,26 @@ class User {
     excluir() {
         
     }
+
+    setId(id) {
+        return this.id = id;
+    }
+
+    setNomeCompleto(nomeCompleto) {
+        return this.nomeCompleto = nomeCompleto;
+    } 
+
+    setCpf(cpf) {
+        return this.cpf = cpf;
+    } 
+
+    setTelefone(telefone) {
+       return this.telefone = telefone;
+    }
+
+    setEmail(email) {
+        return this.email = email;
+    } 
 }
 
 export default User;
