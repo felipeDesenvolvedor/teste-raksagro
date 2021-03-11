@@ -1,6 +1,5 @@
 import User from './classes/User';
-import {checkPage, initializeLocalStorage, inputEmpty, valideEmail, valideCPF, addMessageError, removeMessageError} from './utils.js';
-import {inputEmptyMessage, inputInvalidEmail, inputInvalidCPF} from './messages';
+import {checkPage, initializeLocalStorage, inputEmpty, inValideEmail, inValideCPF, addMessageError, removeMessageError} from './utils.js';
 
 
 const save = () => {
@@ -20,10 +19,14 @@ const save = () => {
 // handle events
 const haldleForm = () => {
     const formUser     = document.querySelector('.js-form'); 
+    const nomeCompleto = formUser.nomeCompleto
+    const email = formUser.email
+    const cpf = formUser.cpf
+    const telefone = formUser.telefone
 
     formUser.addEventListener('submit', event => event.preventDefault());
 
-    if(nameEmpty() || emailEmpty() || cpfEmpty() || telefoneEmpty()) {
+    if(inputInvalide(nomeCompleto) || inputInvalide(email) || inputInvalide(cpf) || inputInvalide(telefone)) {
         return;
     }
 
@@ -47,61 +50,33 @@ const handleBtnCadastrar = () => {
     });
 }
 
-// validate inputs
-const nameEmpty = () => {
-    const formUser     = document.querySelector('.js-form');
-    const nomeCompleto = formUser.nomeCompleto
-
-    if (inputEmpty(nomeCompleto)) {
-        addMessageError(nomeCompleto, "input--empty", inputEmptyMessage);
-        return true;
-    }
-
-    removeMessageError(nomeCompleto, "input--empty");
-    return false
+const handleBlurInput = input => {
+    input.addEventListener('blur', () => inputInvalide(input))
 }
 
-const emailEmpty = () => {
-    const formUser     = document.querySelector('.js-form');
-    const email = formUser.email;
+// input Invalide
+const inputInvalide = input => {
 
-    if(inputEmpty(email)) {
-        addMessageError(email, "input--empty", inputEmptyMessage)
-        return true;
+    const fields = {
+        "email": () => inValideEmail(input),
+        "cpf": () => inValideCPF(input)
     }
 
-    removeMessageError(email, "input--empty");
-    return false;
-}
-
-const cpfEmpty = () => {
-    const formUser     = document.querySelector('.js-form');
-    const cpf = formUser.cpf;
-
-    if(inputEmpty(cpf)) {
-        addMessageError(cpf, "input--empty", inputEmptyMessage)
-        return true;
+    if(inputEmpty(input)) {
+        return true
     }
 
-    removeMessageError(cpf, "input--empty");
-    return false;
-}
-
-const telefoneEmpty = () => {
-    const formUser     = document.querySelector('.js-form');
-    const telefone = formUser.telefone;
-
-    if(inputEmpty(telefone)) {
-        addMessageError(telefone, "input--empty", inputEmptyMessage)
-        return true;
+    if (fields[input.id]) {
+       return fields[input.id]()
     }
 
-    removeMessageError(telefone, "input--empty");
-    return false;
+    return false; 
 }
 
 document.addEventListener('DOMContentLoaded', () => {
     handleBtnCadastrar();
+
+    document.querySelectorAll('.form__group input').forEach(el => handleBlurInput(el))
 });
 
 export {handleBtnCadastrar, save, haldleForm}

@@ -1,3 +1,4 @@
+import {inputEmptyMessage, inputInvalidEmail, inputInvalidCPF} from './messages';
 
 const checkPage = page => document.body.id === page ? true : false; 
 
@@ -15,20 +16,41 @@ const initializeLocalStorage = () => {
     return localStorage.getItem('lastInsertedUser');
 }
 
-const inputEmpty = input => input.value.length < 3 ? true : false;
+const inputEmpty = input => {
 
-const valideEmail = input => {
+    if (input.value.length < 3) {
+        addMessageError(input, "input__name--empty", inputEmptyMessage);
+        return true
+    }
+
+    removeMessageError(input, "input__name--empty");
+    return false
+};
+
+const inValideEmail = input => {
     const regex = /\w@\w*\.\w/;
     const value = input.value
 
-    return regex.test(value);
+    if (regex.test(value)) {
+        removeMessageError(input, "input__email--invalide", inputInvalidEmail);
+        return false;
+    }
+    
+    addMessageError(input, "input__email--invalide", inputInvalidEmail);
+    return true;
 }
 
-const valideCPF = input => {
+const inValideCPF = input => {
     const regex = /\d{3}\.\d{3}\.\d{3}-\d{2}/;
     const value = input.value;
 
-    return regex.test(value);
+    if (regex.test(value)) {
+        removeMessageError(input, "input__cpf--invalide", inputInvalidCPF);
+        return false;
+    }
+    
+    addMessageError(input, "input__cpf--invalide", inputInvalidCPF);
+    return true;
 }
 
 const removeMessageError = (element, className) => {
@@ -54,4 +76,4 @@ const addMessageError = (element, className, message) => {
     elementParent.classList.add(className);
 } 
 
-export {checkPage, initializeLocalStorage, inputEmpty, valideEmail, valideCPF, addMessageError, removeMessageError};
+export {checkPage, initializeLocalStorage, inputEmpty, inValideEmail, inValideCPF, addMessageError, removeMessageError};
