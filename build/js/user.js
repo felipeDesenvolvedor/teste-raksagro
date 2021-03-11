@@ -1,6 +1,9 @@
 import User from './classes/User';
-import {checkPage, initializeLocalStorage, inputEmpty, inValideEmail, inValideCPF, addMessageError, removeMessageError} from './utils.js';
+import {checkPage, initializeLocalStorage, inputEmpty, inValideEmail, inValideCPF} from './utils';
 
+const edit = () => {
+
+}
 
 const save = () => {
     let data = haldleForm();
@@ -30,6 +33,8 @@ const haldleForm = () => {
         return;
     }
 
+    console.log(formUser);
+
     return {
         "nomeCompleto":formUser.nomeCompleto.value,
         "email":formUser.email.value,
@@ -40,14 +45,7 @@ const haldleForm = () => {
 
 const handleBtnCadastrar = () => {
     const btnCadastrar = document.querySelector('.js-cadastrar');
-
-    if(!checkPage('pageUser')) {
-        return null;
-    }
-    
-    btnCadastrar.addEventListener('click', () => {
-        save();
-    });
+    btnCadastrar.addEventListener('click', () => save());
 }
 
 const handleBlurInput = input => {
@@ -74,8 +72,12 @@ const inputInvalide = input => {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+    
+    if(!checkPage('pageUser')) {
+        return;
+    }
+    
     handleBtnCadastrar();
-
     document.querySelectorAll('.form__group input').forEach(el => handleBlurInput(el))
 });
 
