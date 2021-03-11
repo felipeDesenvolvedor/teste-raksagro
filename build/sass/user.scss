@@ -1,5 +1,97 @@
-.form__cadastrar {
-    display: grid;
-    grid-template: auto auto / auto auto;
-    gap: 20px;
+.top__logo__container {
+    text-align: center;
+    margin:20px;
+}
+
+.form {
+    &__cadastrar {
+        display: grid;
+        grid-template: auto / auto;
+        gap: 30px;
+        width: 300px;
+        margin: 40px auto;
+    } 
+
+    &__group {
+        border:none;
+        position: relative;
+
+        &:last-child {
+            text-align: right;
+        }
+    }
+
+    &__label {
+        display: block;
+        text-transform: capitalize;
+        
+        &[for="cpf"] {
+            text-transform: uppercase;
+        }
+    }
+
+    &__message {
+        position: absolute;
+    }
+
+    &__button {
+        width: 100%;
+        padding:10px;
+        border-radius: 5px;
+        border: none; 
+        text-transform: capitalize;
+        color:#fff;
+        
+        &__cadastrar {
+            background-color:#00c8b3;
+        }
+        
+        &__cancelar {
+            background-color:#ff0000;
+
+            a {
+                text-decoration:none;
+            }
+            a:visited {
+                color:#fff;
+            }
+        }
+    }
+
+    &__input {
+        width: 100%;
+        padding:10px 0;
+        border: none;
+        border-bottom: solid 1px;
+
+        &:focus {
+            outline: none;
+        }
+
+        &::placeholder {
+            text-transform: capitalize;
+        }
+    }
+
+    @media (min-width:768px) {
+        &__cadastrar {
+            grid-template: auto auto / auto auto;
+            width: 768px;
+        }
+        
+        &__button {
+            width: 50%;
+        }
+    }
+
+    @media (min-width:990px) {
+        &__cadastrar {
+            grid-template: auto auto / auto auto;
+            width: 990px;
+        }
+        
+        &__button {
+            width: 50%;
+        }
+    }
 }

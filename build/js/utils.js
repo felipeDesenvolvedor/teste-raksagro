@@ -65,7 +65,7 @@ const removeMessageError = (element, className) => {
 
 const addMessageError = (element, className, message) => {
     let messageHTML = document.createElement('span')
-          messageHTML.classList.add('message');
+          messageHTML.classList.add('form__message');
           messageHTML.innerHTML = message;
 
     let elementParent = element.parentNode;

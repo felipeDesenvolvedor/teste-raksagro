@@ -17,28 +17,31 @@
     <main>
        <form class="form__cadastrar js-form">
            <fieldset class="form__group">
-                <label for="nomeCompleto">nome completo[sem abreviações]</label>
-                <input type="text" id="nomeCompleto" placeholder="nome completo[sem abreviações]"/>
+                <label for="nomeCompleto" class="form__label">nome completo[sem abreviações]</label>
+                <input type="text" id="nomeCompleto" class="form__input" placeholder="nome completo[sem abreviações]"/>
            </fieldset>
 
            <fieldset class="form__group">
-                <label for="email">email</label>
-                <input type="text" id="email" placeholder="email"/>
+                <label for="email" class="form__label">email</label>
+                <input type="text" id="email" class="form__input" placeholder="email"/>
            </fieldset>
 
            <fieldset class="form__group">
-                <label for="cpf">cpf</label>
-                <input type="text" id="cpf" placeholder="cpf"/>
+                <label for="cpf" class="form__label">cpf</label>
+                <input type="text" id="cpf" class="form__input" placeholder="cpf"/>
             </fieldset>
 
             <fieldset class="form__group">
-                <label for="telefone">telefone</label>
-                <input type="text" id="telefone" placeholder="telefone"/>
+                <label for="telefone" class="form__label">telefone</label>
+                <input type="text" id="telefone" class="form__input" placeholder="telefone"/>
             </fieldset>
 
             <fieldset class="form__group">
-                <button><a href="/">voltar</a></button>
-                <button class="js-cadastrar">cadastrar</button>
+                <button class="form__button form__button__cancelar"><a href="/">cancelar</a></button>
+            </fieldset>
+
+            <fieldset class="form__group">
+                <button class="form__button js-cadastrar form__button__cadastrar">cadastrar</button>
             </fieldset>
        </form>
     </main>
