@@ -15,7 +15,15 @@ class User {
     }
 
     listAll() {
+        let totalUser = localStorage.getItem('lastInsertedUser');
+        let listUser = [];
 
+        for(let user = 1; user <= totalUser; user++) {
+            listUser[user] = JSON.parse(localStorage.getItem(user));
+        }
+
+        console.log(listUser);
+        return listUser;
     }
 
     criar({id, nomeCompleto, email, cpf, telefone}) {
@@ -29,12 +37,21 @@ class User {
         return this.localstorage.addRegister(this.setId(id), data);
     }
 
-    editar() {
+    editar({id, nomeCompleto, email, cpf, telefone}) {
+        
+        const data = { 
+            "nomeCompleto":this.setNomeCompleto(nomeCompleto), 
+            "email":this.setEmail(email),
+            "cpf":this.setCpf(cpf), 
+            "telefone":this.setTelefone(telefone)
+        }
+        
+        return this.localstorage.updateRegister(this.setId(id), data);
         
     }
 
-    excluir() {
-        
+    excluir(id) {
+        return this.localstorage.deleteRegister(id);
     }
 
     setId(id) {
