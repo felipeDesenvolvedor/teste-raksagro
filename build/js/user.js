@@ -7,16 +7,26 @@ const edit = () => {
 
 const save = () => {
     let data = haldleForm();
+    const btnCadastrar = document.querySelector('.js-cadastrar');
     
     if (!data) {
         return false;
     }
     
+    loader(btnCadastrar, 'form__button--loader');
+
     let id = initializeLocalStorage();
     data['id'] = id;
 
-    const user = new User();
-    return user.criar(data);
+    let user = new User();
+    user = user.criar(data);
+    
+    setTimeout(() => {
+        loader(btnCadastrar, 'form__button--loader');
+        location.href = "/"
+    }, 500);
+    
+    return user;
 }
 
 // handle events
@@ -43,13 +53,12 @@ const haldleForm = () => {
     }
 }
 
-const handleBtnCadastrar = cbLoader => {
+const handleBtnCadastrar = () => {
     const btnCadastrar = document.querySelector('.js-cadastrar');
 
-        btnCadastrar.addEventListener('click', () => {
-            save()
-            cbLoader();
-        });
+    btnCadastrar.addEventListener('click', () => {    
+        save()
+    });
 }
 
 const handleBlurInput = input => {
@@ -81,7 +90,7 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
     }
     
-    handleBtnCadastrar(loader);
+    handleBtnCadastrar();
     document.querySelectorAll('.form__group input').forEach(el => handleBlurInput(el))
 });
 

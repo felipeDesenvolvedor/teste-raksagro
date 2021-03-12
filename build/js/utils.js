@@ -76,11 +76,9 @@ const addMessageError = (element, className, message) => {
     elementParent.classList.add(className);
 }
 
-const loader = () => {
-    
+const loader = (element, className) => {
+    element.classList.toggle(className);
 }
-
-
 
 export {
     checkPage, 
@@ -89,5 +87,6 @@ export {
     inValideEmail, 
     inValideCPF, 
     addMessageError, 
-    removeMessageError
+    removeMessageError,
+    loader
 };
