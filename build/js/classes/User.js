@@ -32,7 +32,12 @@ class User {
         let listUser = [];
 
         for(let user = 1; user <= totalUser; user++) {
-            listUser[user] = JSON.parse(localStorage.getItem(user));
+
+            if (JSON.parse(localStorage.getItem(user))) {
+
+                listUser[user] = JSON.parse(localStorage.getItem(user));
+            }
+
         }
         
         return listUser;

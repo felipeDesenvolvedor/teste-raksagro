@@ -12,6 +12,12 @@ class LocalStorage {
     }
 
     deleteRegister(id) {
+        let lastInsertedUser = 0;
+
+        lastInsertedUser = localStorage.getItem('lastInsertedUser') - 1;
+        localStorage.removeItem('lastInsertedUser');
+        localStorage.setItem('lastInsertedUser', lastInsertedUser);
+        
         localStorage.removeItem(id)
         return id
     }

@@ -18,6 +18,10 @@ const searchUser = name => {
     
     users = userItens(users);
     
+    if(!users) {
+        return;
+    }
+
     users.forEach(element => {
         tbody.appendChild(element);
     })
@@ -29,9 +33,30 @@ const listAllUsers = () => {
     let users = user.listAll();
     
     users = userItens(users);
-    
+
+    if(!users) {
+        return;
+    }
+
     users.forEach(element => {
         tbody.appendChild(element);
+    })
+}
+
+const deleteUser = () => {
+    const buttonsExcluir = document.querySelectorAll(".js-excluir");
+    const tableActions = document.querySelector(".table__body");
+
+    tableActions.addEventListener('click', event => {
+        
+        if(event.target.className == 'js-excluir') {
+            let trPai = event.target.parentNode.parentNode
+            let idUser = trPai.getAttribute('data-id')
+
+            const user = new User();
+            user.excluir(idUser);
+            trPai.remove();
+        }
     })
 }
 
@@ -52,5 +77,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     handleInputSearch();
+    deleteUser();
     listAllUsers();
 });

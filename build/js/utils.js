@@ -81,12 +81,19 @@ const loader = (element, className) => {
 }
 
 const userItens = list => {
+
+    if(!list) {
+        return;
+    }
+
     const tbody  = document.querySelector('.table__body');
           tbody.innerHTML = "";   
    let users = "";
-    users = list.map(element => {
+   
+    users = list.map((element, index) => {
         let tr            = document.createElement('tr')
             tr.classList.add('data')
+            tr.setAttribute('data-id', index);
         // colounas
         let tdNome        = document.createElement('td')
         let tdEmail       = document.createElement('td')
@@ -114,6 +121,8 @@ const userItens = list => {
         let buttonExcluir = document.createElement('button')
             buttonEditar.textContent = "Editar";
             buttonExcluir.textContent = "Excluir";
+            buttonEditar.classList.add('js-editar');
+            buttonExcluir.classList.add('js-excluir');
 
 
         tdEditar.appendChild(buttonEditar);
