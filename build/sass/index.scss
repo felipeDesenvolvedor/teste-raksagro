@@ -44,11 +44,18 @@ table th {
   letter-spacing: .1em;
   text-transform: uppercase;
 }
+
+td {
+    max-width: 100px; 
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
   
-  .data__actions {
-    background-color:white;
-    border:none;
-  }
+.data__actions {
+  background-color:white;
+  border:none;
+}
   
   @media screen and (max-width: 600px) {
     table {
