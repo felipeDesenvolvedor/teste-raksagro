@@ -81,6 +81,8 @@ const loader = (element, className) => {
 }
 
 const userItens = list => {
+    const tbody  = document.querySelector('.table__body');
+          tbody.innerHTML = "";   
    let users = "";
     users = list.map(element => {
         let tr            = document.createElement('tr')

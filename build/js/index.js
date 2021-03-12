@@ -40,7 +40,8 @@ const handleInputSearch = () => {
     const btnPesquisar = document.querySelector('.js-pesquisar');
 
     btnPesquisar.addEventListener('click', () => {
-        searchUser(search.value)
+        let value = search.value.replace(/\b\w/g, letra => letra.toUpperCase())
+        searchUser(value)
     })
 }
 

@@ -22,11 +22,7 @@ class User {
         
         console.log(listUser)
 
-        listUser = listUser.filter(user => {
-            user.nomeCompleto == parameter.replace(/\b\w/g, letra => letra.toUpperCase())
-        });
-        
-        console.log(listUser)
+        listUser = listUser.filter(user => user.nomeCompleto == parameter);
 
         return listUser;
     }
