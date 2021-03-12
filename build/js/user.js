@@ -61,6 +61,16 @@ const handleBtnCadastrar = () => {
     });
 }
 
+const handleBtnCancelar = () => {
+    const btnCancelar = document.querySelector(".js-cancelar");
+    
+    btnCancelar.addEventListener('click', () => {
+        const formUser     = document.querySelector('.js-form');
+        formUser.addEventListener('submit', event => event.preventDefault());
+        location.href = '/';
+    })
+}
+
 const handleBlurInput = input => {
     input.addEventListener('blur', () => inputInvalide(input))
 }
@@ -90,6 +100,7 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
     }
     
+    handleBtnCancelar();
     handleBtnCadastrar();
     document.querySelectorAll('.form__group input').forEach(el => handleBlurInput(el))
 });

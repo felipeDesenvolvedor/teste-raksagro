@@ -14,7 +14,6 @@
 
     &__group {
         border:none;
-        position: relative;
 
         &:last-child {
             text-align: right;
@@ -31,7 +30,6 @@
     }
 
     &__message {
-        position: absolute;
         font-size:0.9em;
         color:red;
     }
