@@ -20,11 +20,18 @@ const listUser = () => {
         let tdEmail       = document.createElement('td')
         let tdCPF         = document.createElement('td')
         let tdTelefone    = document.createElement('td')
+        
+        tdNome.setAttribute('data-label', 'Nome Completo')     
+        tdEmail.setAttribute('data-label', 'Email')
+        tdCPF.setAttribute('data-label', 'CPF')
+        tdTelefone.setAttribute('data-label', 'Telefone')
+        
         //textos
         tdNome.textContent = element.nomeCompleto     
         tdEmail.textContent = element.email
         tdCPF.textContent = element.cpf
         tdTelefone.textContent = element.telefone
+
         //buttons
         let tdEditar  = document.createElement('td')
         let tdExcluir = document.createElement('td')
