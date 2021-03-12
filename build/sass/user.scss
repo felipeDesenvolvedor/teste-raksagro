@@ -19,6 +19,16 @@
         &:last-child {
             text-align: right;
         }
+
+        a {
+            text-decoration:none;
+            height: 35px;
+            line-height: 35px;
+            display: block;
+        }
+        a:visited {
+            color:#fff;
+        }
     }
 
     &__label {
@@ -36,7 +46,7 @@
 
     &__button {
         width: 100%;
-        padding:10px;
+        line-height: 35px;
         border-radius: 5px;
         border: none; 
         text-transform: capitalize;
@@ -45,15 +55,40 @@
         &__cadastrar {
             background-color:#00c8b3;
         }
-        
+
         &__cancelar {
             background-color:#ff0000;
+        }
 
-            a {
-                text-decoration:none;
+        &--loader .button__text {
+            display: none;
+        }
+
+        &--loader {
+            display: inline-block;
+            border-radius: 3px;
+            position: relative;
+            transition: .3s color, .3s border, .3s transform, .3s opacity;
+
+
+            &::after {
+                content: '';
+                border: 2px solid;
+                border-bottom-color: transparent;
+                border-radius: 50%;
+                animation: 1s form__button__cadastrar linear infinite;
+                width: 8px;
+                height: 8px;
+                display:inline-block;
             }
-            a:visited {
-                color:#fff;
+
+            @keyframes form__button__cadastrar {
+                0% {
+                    transform: rotate(0deg);
+                }
+                100% {
+                    transform: rotate(360deg);
+                }
             }
         }
     }

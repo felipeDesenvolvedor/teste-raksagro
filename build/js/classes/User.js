@@ -21,8 +21,7 @@ class User {
         for(let user = 1; user <= totalUser; user++) {
             listUser[user] = JSON.parse(localStorage.getItem(user));
         }
-
-        console.log(listUser);
+        
         return listUser;
     }
 

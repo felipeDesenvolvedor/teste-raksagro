@@ -74,6 +74,20 @@ const addMessageError = (element, className, message) => {
 
     elementParent.appendChild(messageHTML);
     elementParent.classList.add(className);
-} 
+}
 
-export {checkPage, initializeLocalStorage, inputEmpty, inValideEmail, inValideCPF, addMessageError, removeMessageError};
+const loader = () => {
+    
+}
+
+
+
+export {
+    checkPage, 
+    initializeLocalStorage, 
+    inputEmpty, 
+    inValideEmail, 
+    inValideCPF, 
+    addMessageError, 
+    removeMessageError
+};

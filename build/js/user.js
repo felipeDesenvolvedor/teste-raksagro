@@ -1,5 +1,5 @@
 import User from './classes/User';
-import {checkPage, initializeLocalStorage, inputEmpty, inValideEmail, inValideCPF} from './utils';
+import {checkPage, initializeLocalStorage, inputEmpty, inValideEmail, inValideCPF, loader} from './utils';
 
 const edit = () => {
 
@@ -16,7 +16,7 @@ const save = () => {
     data['id'] = id;
 
     const user = new User();
-    user.criar(data);
+    return user.criar(data);
 }
 
 // handle events
@@ -43,9 +43,13 @@ const haldleForm = () => {
     }
 }
 
-const handleBtnCadastrar = () => {
+const handleBtnCadastrar = cbLoader => {
     const btnCadastrar = document.querySelector('.js-cadastrar');
-    btnCadastrar.addEventListener('click', () => save());
+
+        btnCadastrar.addEventListener('click', () => {
+            save()
+            cbLoader();
+        });
 }
 
 const handleBlurInput = input => {
@@ -77,7 +81,7 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
     }
     
-    handleBtnCadastrar();
+    handleBtnCadastrar(loader);
     document.querySelectorAll('.form__group input').forEach(el => handleBlurInput(el))
 });
 
