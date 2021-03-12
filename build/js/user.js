@@ -46,7 +46,7 @@ const haldleForm = () => {
     console.log(formUser);
 
     return {
-        "nomeCompleto":formUser.nomeCompleto.value,
+        "nomeCompleto":formUser.nomeCompleto.value.replace(/\b\w/g, letra => letra.toUpperCase()),
         "email":formUser.email.value,
         "cpf":formUser.cpf.value,
         "telefone":formUser.telefone.value,

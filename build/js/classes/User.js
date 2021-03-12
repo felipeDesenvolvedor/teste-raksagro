@@ -10,8 +10,25 @@ class User {
         this.localstorage = new LocalStorage();
     }
    
-    list({idUser}) {
+    list(parameter) {
+        console.log(parameter)
 
+        let totalUser = localStorage.getItem('lastInsertedUser');
+        let listUser = [];
+
+        for(let user = 1; user <= totalUser; user++) {
+            listUser[user] = JSON.parse(localStorage.getItem(user));
+        }
+        
+        console.log(listUser)
+
+        listUser = listUser.filter(user => {
+            user.nomeCompleto == parameter.replace(/\b\w/g, letra => letra.toUpperCase())
+        });
+        
+        console.log(listUser)
+
+        return listUser;
     }
 
     listAll() {
