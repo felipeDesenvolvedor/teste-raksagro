@@ -32,6 +32,8 @@
 
     &__message {
         position: absolute;
+        font-size:0.9em;
+        color:red;
     }
 
     &__button {
@@ -41,6 +43,7 @@
         border: none; 
         text-transform: capitalize;
         color:#fff;
+        font-size:1em;
         
         &__cadastrar {
             background-color:#00c8b3;
