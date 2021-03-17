@@ -18,11 +18,13 @@ const edit = () => {
 
     let user = new User();
     user = user.editar(data);
+
+    localStorage.removeItem('updataThisUser')
+    formUser.removeAttribute('data-id')
     
 
     setTimeout(() => {
         loader(btnCadastrar, 'form__button--loader')
-        localStorage.removeItem('updataThisUser')
 
         location.href = "/"
     }, 500)
@@ -78,18 +80,17 @@ const haldleForm = () => {
 
 const loadDataForm = () => {
     const updateThisUser = JSON.parse(localStorage.getItem('updataThisUser'))
-    
+    const formUser = document.querySelector('.js-form') 
+
     if(!updateThisUser) {
         return
     }
-    
-    const formUser = document.querySelector('.js-form') 
           
-          formUser.setAttribute("data-id", updateThisUser.id)  
-          formUser.nomeCompleto.value = updateThisUser.nomeCompleto
-          formUser.telefone.value     = updateThisUser.telefone
-          formUser.email.value        = updateThisUser.email
-          formUser.cpf.value          = updateThisUser.cpf
+    formUser.setAttribute("data-id", updateThisUser.id)  
+    formUser.nomeCompleto.value = updateThisUser.nomeCompleto
+    formUser.telefone.value     = updateThisUser.telefone
+    formUser.email.value        = updateThisUser.email
+    formUser.cpf.value          = updateThisUser.cpf
 }
 
 const handleBtnCadastrar = () => {
