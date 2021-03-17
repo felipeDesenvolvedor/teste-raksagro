@@ -5,20 +5,32 @@ const actionEdit  = () => {
     
 }
 
-const searchUser = (name, nomeCompletoTable) => {
-    const tbody  = document.querySelector('.table__body');
-          tbody.innerHTML = "";
+const searchUser = name => {
+    let nomeCompletoTable = document.querySelectorAll('td[data-label="Nome Completo"]')      
+    const tbody  = document.querySelector('.table__body');    
 
-    let namefilter = "";
+    let filterName = "";
+    let notFilterName = "";
+    
     let arrayNames = [...nomeCompletoTable]
     
-    namefilter = arrayNames.filter(element => { 
+    filterName = arrayNames.filter(element => { 
         let passedFilter = element.textContent.toLowerCase().indexOf(name) >= 0
-        return passedFilter ? element : null  
+        return passedFilter ? element : null 
     })
 
-    namefilter.forEach(element => {
-        tbody.appendChild(element.parentNode)
+
+    notFilterName = arrayNames.filter(element => { 
+        let passedFilter = element.textContent.toLowerCase().indexOf(name) < 0
+        return passedFilter ? element : null 
+    })
+
+    filterName.forEach(element => {
+         element.parentNode.style.display = "table-row"
+    })
+
+    notFilterName.forEach(element => {
+        element.parentNode.style.display = "none"
     })
 }
 
@@ -57,10 +69,9 @@ const deleteUser = () => {
 
 const handleInputSearch = () => {
     const userSearchInput = document.querySelector('.user__search')
-    let nomeCompletoTable = document.querySelectorAll('td[data-label="Nome Completo"]')
     
     userSearchInput.addEventListener('input', event => {
-        searchUser(event.target.value.toLowerCase(), nomeCompletoTable)
+        searchUser(event.target.value.toLowerCase())
     })
 }
 
