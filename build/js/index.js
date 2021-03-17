@@ -5,25 +5,20 @@ const actionEdit  = () => {
     
 }
 
-const searchUser = name => {
-    
-    if(!name) {
-        return;
-    }
-
-    const user = new User();
+const searchUser = (name, nomeCompletoTable) => {
     const tbody  = document.querySelector('.table__body');
-    
-    let users = user.list(name);
-    
-    users = userItens(users);
-    
-    if(!users) {
-        return;
-    }
+          tbody.innerHTML = "";
 
-    users.forEach(element => {
-        tbody.appendChild(element);
+    let namefilter = "";
+    let arrayNames = [...nomeCompletoTable]
+    
+    namefilter = arrayNames.filter(element => { 
+        let passedFilter = element.textContent.toLowerCase().indexOf(name) >= 0
+        return passedFilter ? element : null  
+    })
+
+    namefilter.forEach(element => {
+        tbody.appendChild(element.parentNode)
     })
 }
 
@@ -61,12 +56,11 @@ const deleteUser = () => {
 }
 
 const handleInputSearch = () => {
-    const search = document.querySelector('.user__search');
-    const btnPesquisar = document.querySelector('.js-pesquisar');
-
-    btnPesquisar.addEventListener('click', () => {
-        let value = search.value.replace(/\b\w/g, letra => letra.toUpperCase())
-        searchUser(value)
+    const userSearchInput = document.querySelector('.user__search')
+    let nomeCompletoTable = document.querySelectorAll('td[data-label="Nome Completo"]')
+    
+    userSearchInput.addEventListener('input', event => {
+        searchUser(event.target.value.toLowerCase(), nomeCompletoTable)
     })
 }
 
@@ -76,7 +70,7 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
     }
 
-    handleInputSearch();
     deleteUser();
     listAllUsers();
+    handleInputSearch();
 });
