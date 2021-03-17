@@ -2,7 +2,32 @@ import User from './classes/User';
 import {checkPage, initializeLocalStorage, inputEmpty, inValideEmail, inValideCPF, loader} from './utils';
 
 const edit = () => {
+    let data = haldleForm();
+    const btnCadastrar = document.querySelector('.js-cadastrar');
+    
+    if (!data) {
+        return false;
+    }
 
+    loader(btnCadastrar, 'form__button--loader');
+
+    const formUser = document.querySelector('.js-form')
+    const idUser = formUser.getAttribute("data-id")
+
+    data['id'] = idUser
+
+    let user = new User();
+    user = user.editar(data);
+    
+
+    setTimeout(() => {
+        loader(btnCadastrar, 'form__button--loader')
+        localStorage.removeItem('updataThisUser')
+
+        location.href = "/"
+    }, 500)
+    
+    return user
 }
 
 const save = () => {
@@ -43,8 +68,6 @@ const haldleForm = () => {
         return;
     }
 
-    console.log(formUser);
-
     return {
         "nomeCompleto":formUser.nomeCompleto.value.replace(/\b\w/g, letra => letra.toUpperCase()),
         "email":formUser.email.value,
@@ -53,10 +76,32 @@ const haldleForm = () => {
     }
 }
 
+const loadDataForm = () => {
+    const updateThisUser = JSON.parse(localStorage.getItem('updataThisUser'))
+    
+    if(!updateThisUser) {
+        return
+    }
+    
+    const formUser = document.querySelector('.js-form') 
+          
+          formUser.setAttribute("data-id", updateThisUser.id)  
+          formUser.nomeCompleto.value = updateThisUser.nomeCompleto
+          formUser.telefone.value     = updateThisUser.telefone
+          formUser.email.value        = updateThisUser.email
+          formUser.cpf.value          = updateThisUser.cpf
+}
+
 const handleBtnCadastrar = () => {
     const btnCadastrar = document.querySelector('.js-cadastrar');
 
-    btnCadastrar.addEventListener('click', () => {    
+    btnCadastrar.addEventListener('click', () => {   
+        
+        if(localStorage.getItem('updataThisUser')) {
+            edit()
+            return
+        }
+        
         save()
     });
 }
@@ -99,7 +144,8 @@ document.addEventListener('DOMContentLoaded', () => {
     if(!checkPage('pageUser')) {
         return;
     }
-    
+
+    loadDataForm();
     handleBtnCancelar();
     handleBtnCadastrar();
     document.querySelectorAll('.form__group input').forEach(el => handleBlurInput(el))

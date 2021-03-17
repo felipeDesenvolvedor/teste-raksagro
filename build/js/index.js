@@ -2,7 +2,24 @@ import User from './classes/User';
 import {checkPage, userItens} from './utils';
 
 const actionEdit  = () => {
-    
+    const tableActions = document.querySelector(".table__body");
+    let idUser = 0;
+    let userData = "";
+
+    tableActions.addEventListener('click', event => {
+        localStorage.removeItem('updataThisUser')
+
+        if(event.target.className == 'js-editar') {
+            idUser = event.target.parentNode.parentNode.getAttribute('data-id')
+            userData = JSON.parse(localStorage.getItem(idUser))
+            
+            userData['id'] = idUser;
+
+           localStorage.setItem('updataThisUser', JSON.stringify(userData));
+           
+           location.href = "/cadastrar/user.html";
+        }
+    })
 }
 
 const searchUser = name => {
@@ -51,7 +68,6 @@ const listAllUsers = () => {
 }
 
 const deleteUser = () => {
-    const buttonsExcluir = document.querySelectorAll(".js-excluir");
     const tableActions = document.querySelector(".table__body");
 
     tableActions.addEventListener('click', event => {
@@ -81,6 +97,7 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
     }
 
+    actionEdit()
     deleteUser();
     listAllUsers();
     handleInputSearch();

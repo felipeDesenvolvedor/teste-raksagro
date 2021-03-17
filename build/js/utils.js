@@ -119,6 +119,7 @@ const userItens = list => {
 
         let buttonEditar  = document.createElement('button')
         let buttonExcluir = document.createElement('button')
+            
             buttonEditar.textContent = "Editar";
             buttonExcluir.textContent = "Excluir";
             buttonEditar.classList.add('js-editar');

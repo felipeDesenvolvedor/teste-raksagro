@@ -64,7 +64,6 @@ class User {
         }
         
         return this.localstorage.updateRegister(this.setId(id), data);
-        
     }
 
     excluir(id) {
