@@ -9,7 +9,7 @@ const actionEdit  = () => {
     tableActions.addEventListener('click', event => {
         localStorage.removeItem('updataThisUser')
 
-        if(event.target.className == 'js-editar') {
+        if(event.target.classList.contains('js-editar')) {
             idUser = event.target.parentNode.parentNode.getAttribute('data-id')
             userData = JSON.parse(localStorage.getItem(idUser))
             
@@ -72,7 +72,7 @@ const deleteUser = () => {
 
     tableActions.addEventListener('click', event => {
         
-        if(event.target.className == 'js-excluir') {
+        if(event.target.classList.contains('js-excluir') ) {
             let trPai = event.target.parentNode.parentNode
             let idUser = trPai.getAttribute('data-id')
 

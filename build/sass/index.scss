@@ -1,3 +1,9 @@
+// variáveis de breakpoint
+$mobileM:320px;
+$mobileL:425px;
+$tablet:768px;
+$desktop:1024px; 
+
 * {
     margin:0;
     padding:0;
@@ -20,7 +26,9 @@ table {
   padding: 0;
   width: 100%;
   table-layout: fixed;
+  margin-top:20px;
 }
+
 
 table caption {
   font-size: 1.5em;
@@ -29,7 +37,6 @@ table caption {
 
 table tr {
   background-color: #f8f8f8;
-  border: 1px solid #ddd;
   padding: .35em;
 }
 
@@ -52,51 +59,111 @@ td {
 }
   
 .data__actions {
-  background-color:white;
   border:none;
-}
-  
-  @media screen and (max-width: 600px) {
-    table {
-      border: 0;
+
+  .form {
+    &__cadastrar {
+        display: grid;
+        grid-template: auto / auto;
+        gap: 30px;
+        width: 300px;
+        margin: 40px auto;
     }
-  
-    table caption {
-      font-size: 1.3em;
-    }
-    
-    table thead {
-      border: none;
-      clip: rect(0 0 0 0);
-      height: 1px;
-      margin: -1px;
-      overflow: hidden;
-      padding: 0;
-      position: absolute;
-      width: 1px;
-    }
-    
-    .data {
-      display: block;
-    }
-    
-    table td {
-      border-bottom: 1px solid #ddd;
-      display: block;
-      font-size: .8em;
-      text-align: right;
-      max-width: 100%; 
-    }
-    
-    table td::before {
-  
-      content: attr(data-label);
-      float: left;
-      font-weight: bold;
-      text-transform: uppercase;
-    }
-    
-    table td:last-child {
-      border-bottom: 0;
+
+    &__button {
+        line-height: 35px;
+        border-radius: 5px;
+        border: none; 
+        text-transform: capitalize;
+        color:#fff;
+        font-size:1em;
+        width: 100%;
+        height: 100%;
+        color: transparent;
+        
+        &__editar {
+          background:transparent url(/assets/img/pngwing.com.png) no-repeat center / 20px;
+        }
+
+        &__excluir {
+            background:transparent url(/assets/img/delete_4219.ico) no-repeat center / 20px
+        }
+
+        &--loader .button__text {
+            display: none;
+        }
     }
   }
+}
+  
+@media screen and (max-width: 600px) {
+  table {
+    border: 0;
+  }
+
+  table caption {
+    font-size: 1.3em;
+  }
+  
+  table thead {
+    border: none;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+  }
+  
+  .data {
+    display: block;
+  }
+  
+  table td {
+    border-bottom: 1px solid #ddd;
+    display: block;
+    font-size: .8em;
+    text-align: right;
+    max-width: 100%; 
+  }
+  
+  table td::before {
+
+    content: attr(data-label);
+    float: left;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+  
+  table td:last-child {
+    border-bottom: 0;
+  }
+}
+
+@media (min-width:600px) {
+  table tr {
+    border: 1px solid #ddd;
+  }
+}
+
+
+
+.container {
+    margin: 0 auto;
+    width: calc(100% - 20px);
+
+    @media(max-width:$mobileM) {
+        width: 300px;
+    }
+
+    @media(min-width:$tablet) {
+        table thead th {
+          border:1px solid #ddd;
+        }
+
+        td {
+          border:1px solid #ddd;
+      }
+    }
+}

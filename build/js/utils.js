@@ -121,15 +121,18 @@ const userItens = list => {
         let buttonExcluir = document.createElement('button')
             
             buttonEditar.textContent = "Editar";
-            buttonExcluir.textContent = "Excluir";
+            buttonEditar.classList.add('form__button');
             buttonEditar.classList.add('js-editar');
+            buttonEditar.classList.add('form__button__editar');
+            
+            buttonExcluir.textContent = "Excluir";
+            buttonExcluir.classList.add('form__button');
             buttonExcluir.classList.add('js-excluir');
+            buttonExcluir.classList.add('form__button__excluir');
 
 
         tdEditar.appendChild(buttonEditar);
         tdExcluir.appendChild(buttonExcluir);
-
-
         tr.appendChild(tdNome);
         tr.appendChild(tdEmail);
         tr.appendChild(tdCPF);
