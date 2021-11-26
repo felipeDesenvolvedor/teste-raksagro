@@ -17,7 +17,7 @@ const actionEdit  = () => {
 
            localStorage.setItem('updataThisUser', JSON.stringify(userData));
            
-           location.href = "/cadastrar/user.html";
+           location.href = "cadastrar/user.html";
         }
     })
 }

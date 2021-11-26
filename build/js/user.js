@@ -50,7 +50,7 @@ const save = () => {
     
     setTimeout(() => {
         loader(btnCadastrar, 'form__button--loader');
-        location.href = "/"
+        location.href = "../index.html"
     }, 500);
     
     return user;
@@ -113,7 +113,7 @@ const handleBtnCancelar = () => {
     btnCancelar.addEventListener('click', () => {
         const formUser     = document.querySelector('.js-form');
         formUser.addEventListener('submit', event => event.preventDefault());
-        location.href = '/';
+        location.href = '../index.html';
     })
 }
 
